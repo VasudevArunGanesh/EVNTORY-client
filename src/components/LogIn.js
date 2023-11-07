@@ -8,7 +8,7 @@ function LogIn() {
   
     let handleSubmit = (event) => {
       const obj = { name, email, password };
-      const url = "http://localhost:5500/events/login";
+      const url = "http://localhost:5500/user/login";
       axios
         .post(url, obj)
         .then((res) => {
