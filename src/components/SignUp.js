@@ -11,7 +11,7 @@ function SignUp() {
   let handleSubmit = (event) => {
     const obj = { name, email, password };
     console.log(obj);
-    const url = "http://localhost:5500/events/create-event";
+    const url = "http://localhost:5500/user/create-event";
     axios
       .post(url, obj)
       .then((res) => {
@@ -55,10 +55,10 @@ function SignUp() {
       </form>
       <h2>Have an account?</h2>
       <h4>
-        <Link to="/login">Login Page</Link>
+        <Link to="/login">Login</Link>
       </h4>
       <h4>
-        <Link to="/view">View Page</Link>
+        <Link to="/">Home Page</Link>
       </h4>
     </div>
   );
