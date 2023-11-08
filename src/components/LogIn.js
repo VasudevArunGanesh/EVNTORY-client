@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+import 'bootstrap/dist/css/bootstrap.css';
+import "./styles/login_signup.css";
 function LogIn() {
-    const [name, setName] = useState();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
   
     let handleSubmit = (event) => {
-      const obj = { name, email, password };
-      const url = "http://localhost:5500/user/login";
+      const obj = { email, password };
+      const url = "http://localhost:5000/user/login";
       axios
         .post(url, obj)
         .then((res) => {
@@ -20,33 +20,31 @@ function LogIn() {
       event.preventDefault();
     };
     return (
-      <div>
-        <h1>event Login Page</h1>
+      <div className="container-fluid">
+      <div className="card">
+        <h1>LOG IN</h1>
         <form onSubmit={handleSubmit}>
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Enter your name"
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label for="email">Email</label>
+          <div>
           <input
             type="email"
             id="email"
+            required
             placeholder="Enter your email"
             onChange={(e) => setEmail(e.target.value)}
-          />
-          <label for="password">Password</label>
+          /></div>
+          <div>
           <input
             type="password"
             id="password"
             placeholder="Enter password"
             onChange={(e) => setPassword(e.target.value)}
-          />
-          <input id="submit" type="submit" value="submit" />
+          /></div>
+          <input className="btn" id="submit" type="submit" value="submit" />
         </form>
+        
       </div>
+      
+    </div>
     );
   }
   
