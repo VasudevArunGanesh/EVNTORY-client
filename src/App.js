@@ -1,9 +1,11 @@
 import './App.css';
 import SignUp from "./components/SignUp";
 import LogIn from "./components/LogIn";
-import HomePage from "./components/HomePage"
+import LandPage from "./components/LandPage"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
+import CreateEvent from './components/CreateEvent';
+import ProfilePage from './components/ProfilePage';
 
 
 function App() {
@@ -20,9 +22,11 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<LandPage />} />
         <Route path="/user/login" element={<LogIn />} />
         <Route path="/user/signup" element={<SignUp />} />
+        <Route path="/user/:id/createevent" element={<CreateEvent />} />
+        <Route path='/user/:id' element={<ProfilePage />} />
       </Routes>
     </BrowserRouter>
     </div>
