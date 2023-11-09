@@ -44,14 +44,14 @@ function SignUp() {
     event.preventDefault();
   };
   return ( <div>
-    <Navbar links={[]} buttons={[]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"}/>
+    <Navbar links={[]} buttons={[]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/login"} username={"LOG IN"}/>
     <div className="background-image-sign"></div>
     <div className="container-fluid" >
       <div className="card">
       <div  className="card-title">
           <img className="login-img" src={logo} width="220" height="100" /><h1>SIGN UP</h1>
           </div>
-        <form onSubmit={handleSubmit} className="was-validated">
+        <form onSubmit={handleSubmit} className="was-validated form-login">
           <div><input
             type="text"
             className="form-control"
@@ -85,9 +85,6 @@ function SignUp() {
           <input className="btn" id="submit" type="submit" value="SIGN UP" />
         </form>
         <p>Have an account? <Link className="link-underline link-underline-opacity-0" to="/user/login">Login</Link></p>
-        {/* <h4>
-          <Link className="link-underline link-underline-opacity-0" to="/">Home Page</Link>
-        </h4> */}
       </div>
       </div>
     <div className="footer"><Footer textColor={'white'}></Footer></div>

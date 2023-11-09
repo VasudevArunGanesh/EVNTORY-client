@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.css';
 import Footer from "./Footer";
+import Navbar from "./Navbar";
 
 
 export default function ProfilePage(){
@@ -22,7 +23,9 @@ export default function ProfilePage(){
      });})
     return (
         <div>
+          <Navbar links={[]} buttons={[{text:"Create an Event", path:"./createevent"}]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/"+id} username={name}/>
             <ul>
+
                 <li>Name: {name}</li>
                 <li>Email: {email}</li>
             </ul>

@@ -41,7 +41,7 @@ function LogIn() {
         <div  className="card-title">
           <img className="login-img" src={logo} width="200" height="100" /><h1>LOG IN</h1>
           </div>
-        <form className="logn-form" onSubmit={handleSubmit}>
+        <form className="logn-form form-login" onSubmit={handleSubmit}>
           <div>
           <input
             type="email"
