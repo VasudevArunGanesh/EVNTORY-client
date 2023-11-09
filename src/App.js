@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import CreateEvent from './components/CreateEvent';
 import ProfilePage from './components/ProfilePage';
+import UpdateEvent from './components/UpdateEvent';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/user/signup" element={<SignUp />} />
         <Route path="/user/:id/createevent" element={<CreateEvent />} />
         <Route path='/user/:id' element={<ProfilePage />} />
+        <Route path="/user/:id/event/:eid/updateevent" element={<UpdateEvent />}/>
       </Routes>
     </BrowserRouter>
     </div>

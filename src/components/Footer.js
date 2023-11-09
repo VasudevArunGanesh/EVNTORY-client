@@ -4,7 +4,7 @@ import "./styles/footer.css";
 
 export default function Footer({textColor}){
     return (
-        <footer style={{color:`${textColor}`}}>
+        <footer style={{color:`${textColor}`, marginTop:"100px"}}>
     <div className="container-fluid m-0 p-0" style={{display:"block",width:"100%",margin:"auto"}}>
         <div className="row" style={{width:"100%",margin:"auto"}} >
             <div className="col-4 p-0"  >

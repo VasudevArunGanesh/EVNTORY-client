@@ -6,4 +6,12 @@
     z-index: 999;
     height: 60px;
   }
+
+  .pfp, .pfpname{
+    margin-right: 5px;
+    display: inline-block;
+
+  }
+
+  
   
