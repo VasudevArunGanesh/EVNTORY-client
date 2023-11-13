@@ -1,3 +1,5 @@
-footer{
-    margin-top: 50px;
+.main-footer{
+    position: relative;
+    margin-top: 6rem;
+    bottom: 0px;
 }

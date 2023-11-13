@@ -13,5 +13,22 @@
 
   }
 
+  .dropdown-menu.show{
+    position: fixed;
+    top:60px;
+    z-index: 999;
+    right: 0;
+    left: auto
+  }
+
+  .d-flex{
+    margin-right: 1rem;
+  }
   
-  
+  .dropdown{
+    margin-right: 5px;
+  }
+
+  .dropdown-item:hover{
+    background-color: #222;
+  }
