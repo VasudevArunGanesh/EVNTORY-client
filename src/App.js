@@ -14,6 +14,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import React, {useState, useEffect} from 'react';
 import { format, parseISO } from 'date-fns';
 import CreateNewEvent from './components/CreateNewEvent';
+import ViewEvent from './components/ViewEvent';
+import TicketBooking from './components/TicketBooking';
 
 function App() {
   
@@ -77,7 +79,8 @@ useEffect(() =>{
         <Route path="/user/:id/event/:eid/update-event" element={<UpdateEvent />}/>
         <Route path="/user/:id/home" element={<HomePage />} />
         <Route path="/user/:id/update-pass" element={<UpdatePass />} />
-
+        <Route path="user/:id/event/:eid" element={<ViewEvent />} />
+        <Route path="user/:id/event/:eid/book-ticket" element={<TicketBooking />} />
       </Routes>
     </BrowserRouter>
     </div>

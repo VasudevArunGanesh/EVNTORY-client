@@ -5,8 +5,8 @@ import "./styles/swiper.css"
 export default function EventsNewCarousel({ eventarray }){
     return <div>
         <swiper-container className="home-slider" effect="coverflow" navigation="true" grab-cursor="true" centered-slides="true"
-    slides-per-view="3" coverflow-effect-rotate="5" coverflow-effect-stretch="0" coverflow-effect-depth="50"
-    coverflow-effect-modifier="3" coverflow-effect-slide-shadows="true" loop="true">
+    slides-per-view="6" coverflow-effect-rotate="5" coverflow-effect-stretch="0" coverflow-effect-depth="30"
+    coverflow-effect-modifier="2" coverflow-effect-slide-shadows="true" loop="true">
     {
                 eventarray.map((event, index)=>{
                   // console.log(event);
