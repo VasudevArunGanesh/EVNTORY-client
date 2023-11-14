@@ -110,7 +110,7 @@ export default function ProfilePage(){
         style={customStyles}
         contentLabel="Example Modal"
       >
-        <h2 ref={(_subtitle) => (subtitle = _subtitle)} style={{marginRight:"20px"}}>Update Password<span class="material-symbols-outlined" onClick={closeModal}>cancel</span></h2>
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)} style={{marginRight:"20px"}}>Update Password<span className="material-symbols-outlined" onClick={closeModal}>cancel</span></h2>
         
         <div  className="update-profile-container">
       <form onSubmit={handleSubmit} className="update-profile-form">

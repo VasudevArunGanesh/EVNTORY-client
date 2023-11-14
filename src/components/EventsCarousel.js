@@ -7,7 +7,7 @@ import "./styles/swiper.css"
 import { Link } from 'react-router-dom';
 
 
-export default function EventsCarousel({ eventarray }){
+export default function EventsCarousel({ eventarray, id }){
 
       // useEffect(() => {
       //   const swiperEl = document.querySelector('swiper-container');
@@ -81,7 +81,7 @@ export default function EventsCarousel({ eventarray }){
                     <swiper-slide className="swiper-slide" key={index}>
                     <img src={event.eventPoster} />
                     <h4>{event.eventName}</h4>
-                    <Link to={"./"}><span className="material-symbols-outlined">
+                    <Link to={"/user/"+id+"/event/"+event._id}><span className="material-symbols-outlined">
                       info 
                     </span></Link> 
                     {/* <Link to={"./"} className='button'><button>Go here</button></Link> */}

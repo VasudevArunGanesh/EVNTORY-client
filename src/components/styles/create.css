@@ -3,7 +3,7 @@
 .create-container{
     position: relative;
     top: 60px;
-    margin-top: 3%;
+    margin-top: 1%;
 }
 .create-table ,.create-table-row {
     position: relative;
@@ -85,12 +85,7 @@
     background-color: transparent;
     color: black;
 } */
-.textarea-create{
-}
 
-.select-create{
-
-}
 
 .drop-container {
     position: relative;
@@ -113,27 +108,36 @@
     background: #444;
     border-color: #111;
   }
-  
+/*   
   .drop-container:hover .drop-title {
     color: #444;
-  }
+  } */
   
   .drop-title {
     color: rgb(255, 255, 255, 0.7);
     font-size: 20px;
     font-weight: bold;
-    text-align: center;
+    text-align: start;
     transition: color .2s ease-in-out;
   }
-  #file-upload-button{
-    color: blue;
-  }
+
 
   .drop-container.drag-active {
-    background: #eee;
+    background: #555;
     border-color: #111;
   }
   
-  .drop-container.drag-active .drop-title {
+  /* .drop-container.drag-active .drop-title {
+    color: #222;
+  } */
+
+  input[type=file]::file-selector-button{
+    background-color: transparent;
+    border: 2px solid #555;
+    border-radius: 5px;
+    color: rgb(255, 255, 255, 0.7);
+
+  }
+  input[type=file]::file-selector-button:hover{
     color: #222;
   }

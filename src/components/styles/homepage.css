@@ -10,7 +10,7 @@
     top: 60px;
     color: white;
     background-color: #444;
-    height: 100rem;
+    height: 130rem;
 }
 .main-home-page{
     position: relative;
@@ -87,9 +87,9 @@
 
 .homepage-sidebar img {
 
-    height: 17rem;
-    width: 28rem;
-    background-size: cover;
+    height: 22rem;
+    width: 25rem;
+    background-size: auto;
     border-radius: 10px;
   }
 
@@ -109,10 +109,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 17rem;
-    width: 28rem;
+    height: 22rem;
+    width: 25rem;
     background-size: cover;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: rgba(223, 222, 222, 0.4) -5px 5px, rgba(182, 181, 182, 0.3) -10px 10px,rgba(172, 172, 172, 0.2) -15px 15px, rgba(143, 142, 142, 0.1) -20px 20px, rgba(106, 104, 105, 0.05) -25px 25px;
 }
   .homepage-sidebar #div1 {
@@ -120,22 +120,24 @@
   }
 
   .homepage-sidebar #div2 {
-    top:21.5rem;
+    top:26.5rem;
   }
   .homepage-sidebar #div3 {
-    top: 41.5rem;
+    top: 51.5rem;
   }
   .homepage-sidebar #div4 {
-    top: 61.5rem;
+    top: 76.5rem;
   }
 
   .homepage-sidebar #div5 {
-    top:81.5rem;
+    top:101.5rem;
   }
   .homepage-sidebar #div6 {
-    top: 101.5rem;
+    top: 126.5rem;
   }
-
+.service{
+    margin-top: 50px;
+}
 
 .service .box-container{
     display: grid;
@@ -173,6 +175,10 @@ color: #fff;
     font-size: 1.4rem;
     color: #eee;
     line-height: 1.8;
+}
+
+.about{
+    margin-top: 50px;
 }
 
 .about .row{
@@ -246,3 +252,67 @@ color: #fff;
 ::-webkit-input-placeholder {
     font-style: italic;
  }
+
+
+ .contact{
+    margin-top: 70px;
+ }
+.contact form{
+    max-width:50rem;
+    margin:.5rem auto;
+    text-align:center;
+}
+.contact .heading{
+    color: white;
+}
+
+.contact form .inputBox{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.contact form .inputBox input,
+.contact form textarea{
+    width:100%;
+    background:#333;
+    border-radius: .5rem;
+    padding: 1rem;
+    margin: .7rem 0;
+    font-size: 1.5rem;
+    color:#fff;
+    text-transform:none;
+}
+.contact form .inputBox input{
+    height: 3rem;
+}
+
+.contact form .inputBox input::placeholder,
+.contact form textarea::placeholder{
+    color:#eee;
+    text-transform:capitalize;
+}
+
+.contact form .inputBox input:focus,
+.contact form textarea:focus{
+    background:#444;
+}
+
+.contact form .inputBox input{
+    width:49%;
+}
+
+.contact form textarea{
+    resize:none;
+}
+
+.contact .inputBox .button{
+    width: 15rem;
+    display: block;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+

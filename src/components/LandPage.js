@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Typewriter from 'typewriter-effect';
 import { Button } from 'uiw';
 import EventsNewCarousel from "./EventsNewCarousel";
-
+import Footer from "./Footer";
 
 
 
@@ -55,7 +55,7 @@ export default function LandPage(){
 
         <section className="service" id="service">
 
-<h1 className="heading"> our <span>services</span></h1>
+<h1 className="heading rowdies-text"> Our Services</h1>
 
 <div className="box-container">
 
@@ -104,21 +104,23 @@ export default function LandPage(){
 </div>
 
 </section>
-<section class="about" id="about">
-<h1 class="heading"><span>about</span> us </h1>
-<div class="row">
-<div class="image">
+<section className="about" id="about">
+<h1 className="heading rowdies-text">About Us </h1>
+<div className="row">
+<div className="image">
 <img src="resources/login_back.jpg" alt="" />
 </div>
-<div class="content">
+<div className="content">
 <h3>we will give a very special celebration for you</h3>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam labore fugiat ut esse perferendis perspiciatis provident dolores fuga in facilis culpa possimus, quia praesentium itaque, sapiente quasi harum rem asperiores.</p>
 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat vero expedita incidunt provident quibusdam aut odit, numquam nesciunt similique nisi.</p>
-<a href="#" class="btn">contact us</a>
+<a href="#" className="btn">contact us</a>
 </div>
 </div>
 
 </section>
+<div className="footer"><Footer textColor={'white'}></Footer></div>
+
     </div>
     )
 }

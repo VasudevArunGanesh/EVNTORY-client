@@ -30,9 +30,10 @@ export default function CreateNewEvent(){
     const ticketBooked = 0;
     // const [useOtherServices, setUseOtherServices] = useState([]);
     const eventStatus = 0;//-1=terminated, 1=ongoing
-    const [ eventPoster, setPoster ] = useState("https://picsum.photos/200/300?random=3.jpg");
+    const [ eventPoster, setPoster ] = useState("https://picsum.photos/160/200?random=3.jpg");
     const userId = id;
     var [message,setMessage] = useState("");
+    const registeredUsers = [{}];
     
     useEffect(() => {
       axios
@@ -66,7 +67,8 @@ export default function CreateNewEvent(){
   
 
      const handleFileUpload = async (e) => {
-      const file = e.target.files[0];
+      const file = e.files[0];
+      console.log(file);
       const base64 = await convertToBase64(file);
       setPoster(base64);
      }
@@ -92,7 +94,8 @@ export default function CreateNewEvent(){
           useOtherServices,
           eventStatus,
           eventPoster,
-          userId
+          userId,
+          registeredUsers
         };
     
         const url = "http://localhost:5000/user/createevent";//need to replace
@@ -110,28 +113,6 @@ export default function CreateNewEvent(){
           alert(err);
         })):setMessage("Please provide proper contact information"):setMessage("end date/time is invalid"):setMessage("start date/time is invalid");
     }
-//     const dropContainer = document.getElementsByClassName("drop-container");
-//     const fileInput = document.getElementById("img");
-//   console.log(dropContainer, fileInput);
-
-//     dropContainer.addEventListener("dragover", (e) => {
-//       // prevent default to allow drop
-//       e.preventDefault()
-//     }, false);
-  
-//     dropContainer.addEventListener("dragenter", () => {
-//       dropContainer.classList.add("drag-active")
-//     });
-  
-//     dropContainer.addEventListener("dragleave", () => {
-//       dropContainer.classList.remove("drag-active")
-//     });
-  
-//     dropContainer.addEventListener("drop", (e) => {
-//       e.preventDefault()
-//       dropContainer.classList.remove("drag-active")
-//       fileInput.files = e.dataTransfer.files
-//     });
 
 const customStyle={
     width: "75%",
@@ -162,7 +143,7 @@ const customSlideStyle={
         <h1 className="rowdies-text" style={{color:"white"}}>Create a new Event</h1>
 
             <form className="form-create was-validated">
-                <swiper-container class="mySwiper" css-mode="false" pagination-clickable="true" grab="false" keyboard="true" mousewheel="false" pagination="true" navigation="true" effect="cards" grab-cursor="false" centered-slides="true"  slides-per-view='auto' style={customStyle}>
+                <swiper-container className="mySwiper" css-mode="false" pagination-clickable="true" grab="false" keyboard="true" mousewheel="false" pagination="true" navigation="true" effect="cards" grab-cursor="false" centered-slides="true"  slides-per-view='auto' style={customStyle}>
                     <swiper-slide style={customSlideStyle}>
                     <table className="create-table">
                         <tr className="create-table-row">
@@ -413,13 +394,13 @@ const customSlideStyle={
     e.preventDefault();
     e.target.classList.remove("drag-active");
     const fileInput = document.getElementById("img");
-    console.log(fileInput.files ,e.dataTransfer)
 
     fileInput.files = e.dataTransfer.files;
+    handleFileUpload(fileInput);
   }}>
-                            <div class="drop-title">Drop files here</div>
+                            <div className="drop-title">Drop files here</div>
                             <div>or</div>
-                            <div>                            
+                            <div style={{display:"inline"}}>                            
                                 <input type="file" onChange={(e) => handleFileUpload(e)} id="img" accept=".jpg, .png, .jpeg" required />
                             </div>
                             </label>
