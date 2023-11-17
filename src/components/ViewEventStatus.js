@@ -23,7 +23,7 @@ const customStyles = {
 
 
 
-const ViewEvent = () => {
+const ViewEventStatus = () => {
 const { id } = useParams();
   const { eid } = useParams();
   const navigate = useNavigate(); 
@@ -43,18 +43,15 @@ const { id } = useParams();
       const fetchEventData = async () => {
         try {
           setIsLoading(true);
-          const res = await axios.get("http://localhost:5000/user/"+id)
-          
+          const res = await axios.get("http://localhost:5000/user/"+id)  
           setUser(res.data);
-          
-      
           const response = await axios.get(`http://localhost:5000/events/${eid}`);
           setEventData(response.data);
-         var date = parseISO(response.data.startDate);
-        date = format(date, "dd-MM-yyyy hh:mm")
+          var date = parseISO(response.data.startDate);
+          date = format(date, "dd-MM-yyyy hh:mm")
           setSDate(date);
           date = parseISO(response.data.endDate);
-        date = format(date, "dd-MM-yyyy hh:mm")
+          date = format(date, "dd-MM-yyyy hh:mm")
           setEDate(date);
           console.log(response.data.expectedAttendees,response.data.ticketBooked,response.data.expectedAttendees>response.data.ticketBooked)
           response.data.expectedAttendees>response.data.ticketBooked ? (setDisabled(false)) : (setDisabled(true))
@@ -98,20 +95,38 @@ const { id } = useParams();
             </div>
             <div className='event-footer'>
                 <div className='event-footer-left'>
-                    <div className='event-date rowdies-text'><h3>When?</h3> {eventSDate} to {eventEDate}</div>
-                    <div className='event-venue rowdies-text'><h3>Where?</h3> {eventData.venueName} <br /> {eventData.venueAddress}</div>
-                    <div style={{height:"200px", width:"100%"}}>
-                      <AddressMap  address={eventData.venueAddress}/>
-
-                    </div>
+                  {
+                    eventData.isPrivate ? (<div className='event-date rowdies-text'><h3>This is a Private Event</h3></div>):(
+                      <div>
+                      <div className='event-date rowdies-text'><h3>Tickets Booked:</h3> {eventData.ticketBooked}</div>
+                    <div className='event-venue rowdies-text'><h3>Tickets Remaining:</h3>{(parseInt(eventData.expectedAttendees)-parseInt(eventData.ticketBooked))} </div>
+                    </div>)
+                  }
+                    
+              
                     
                 </div>
                 <div className='event-footer-right'>
-                    <div className='event-type rowdies-text'><h3>Event type:</h3>{eventData.eventType}</div>
-                    <div className='event-theme rowdies-text'><h3>Theme:</h3>{eventData.eventTheme}</div>
-                    <div className='event-theme rowdies-text'><h3>Ticket:</h3>{eventData.ticketPrice} INR</div>
-                    <div className='ticket-button'><Button className='rowdies-text' type='success' disabled={isDisabled} onClick={proceedToBooking}>Book Tickets</Button> {message}</div>
-                    <div className='event-contact rowdies-text'>Contact: {eventData.organizerContact} for more details</div>
+                <div className='event-type rowdies-text'><h3>Booked tickets: </h3></div>
+                {
+                  eventData.isPrivate ? (<div>N/A</div>):(<table style={{textAlign:"center"}}>
+                  <tr>
+                    <th>mail id</th>
+                    <th>no of tickets </th>
+                  </tr>
+                  {
+                    eventData.registeredUsers.map((user, index)=>{
+                      return(
+                        <tr className='rowdies-text'>
+                          <td>{user.email}</td>
+                          <td>{user.noOfTickets}</td>
+                        </tr>
+                      )
+                    })
+                  }
+                  </table>)
+                }
+                  
                 </div>
             {/* <div className='event-'>{eventData.}</div>
             <div className='event-'>{eventData.}</div>
@@ -132,4 +147,4 @@ const { id } = useParams();
   );
 };
 
-export default ViewEvent;
+export default ViewEventStatus;

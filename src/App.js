@@ -16,6 +16,11 @@ import { format, parseISO } from 'date-fns';
 import CreateNewEvent from './components/CreateNewEvent';
 import ViewEvent from './components/ViewEvent';
 import TicketBooking from './components/TicketBooking';
+import AddressMap from './components/AddressMap';
+import SearchPage from './components/SearchPage';
+import FilterPage from './components/FilterPage';
+import LoadingScreen from './components/LoadingScreen';
+import ViewEventStatus from "./components/ViewEventStatus";
 
 function App() {
   
@@ -40,12 +45,13 @@ useEffect(() =>{
       date=format(date, "yyyy-MM-dd'T'HH:mm");
       // console.log(date);
       eventsArray.map((event) => { 
+        if (event.eventStatus==0 || event.eventStatus==1){
         var Sdate = parseISO(event.startDate)
         Sdate=format(Sdate, "yyyy-MM-dd'T'HH:mm");
         var Edate = parseISO(event.endDate);
         Edate = format(Edate, "yyyy-MM-dd'T'HH:mm")
         // console.log("event",Sdate,"sdate",date,"edate",Edate );
-        date>=Edate ? event.eventStatus = -1 : date>=Sdate ? event.eventStatus = 1 : event.eventStatus = 0;
+        date>=Edate ? event.eventStatus = -1 : date>=Sdate ? event.eventStatus = 1 : event.eventStatus = 0;}
       }) 
       axios
       .patch("http://localhost:5000/", eventsArray)
@@ -81,6 +87,11 @@ useEffect(() =>{
         <Route path="/user/:id/update-pass" element={<UpdatePass />} />
         <Route path="user/:id/event/:eid" element={<ViewEvent />} />
         <Route path="user/:id/event/:eid/book-ticket" element={<TicketBooking />} />
+        <Route path="/map" element={<LoadingScreen />} />
+        <Route path="/user/:id/home/:search" element={<SearchPage />} />
+        <Route path="/user/:id/home/filter/local" element={<FilterPage />} />
+        <Route path="user/:id/event/:eid/status" element={<ViewEventStatus />} />
+
       </Routes>
     </BrowserRouter>
     </div>

@@ -13,6 +13,13 @@
 
   }
 
+  .navbar-pfp{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-size: auto;
+  }
+
   .dropdown-menu.show{
     position: fixed;
     top:60px;

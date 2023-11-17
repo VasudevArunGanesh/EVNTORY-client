@@ -24,14 +24,14 @@
     background-image:  url("../resources/log_back.png");
     background-size: cover;
     width:100%;
-    height: 85rem;
+    height: 95rem;
     filter: brightness(50%);
 }
 
   .eventcreatepage{
     top: 60px;
     position: relative;
-
+    height: auto;
   }
   .outer-container {
     padding: 2%;
@@ -153,5 +153,18 @@
     }
 }
 
-  
+  .button-event-dlt{
+    background-color: red;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease-in-out;
+    border: none; 
+    font-weight: 600; 
+    letter-spacing: 0.5px; 
+    padding: 15px; 
+    margin: 10px;
+  }
 
