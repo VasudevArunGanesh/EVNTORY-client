@@ -9,7 +9,7 @@ import Footer from "./Footer";
 export default function UpdateEvent() {
     const { eid } = useParams();
     const { id } = useParams();
-    var [name, setName] = useState();
+    var [user, setUser] = useState("");
     // var [eventData, setEventData] = useState(); 
     var [eventName, setEventName] = useState();
     var [isPrivate, setIsPrivate] = useState();
@@ -63,7 +63,7 @@ export default function UpdateEvent() {
       axios
       .get("http://localhost:5000/user/" + id + "/createevent")
       .then((res) => {
-        setName(res.data.name);
+        setUser(res.data);
       })
       .catch((err) => {
         alert(err);
@@ -112,6 +112,19 @@ export default function UpdateEvent() {
   //   }
   // };
 
+const deleteEvent = async () => {
+  try{
+    const res = axios.patch("http://localhost:5000/"+id+"/events/delete/"+eid);
+    window.location.replace(`/user/${id}`);
+    alert(await res.data.message);
+
+  } catch(err){
+    console.error(err);
+  }
+
+}
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     e.preventDefault();
@@ -136,11 +149,12 @@ export default function UpdateEvent() {
       userId
     };
 
-    const url = "http://localhost:5000/events/update/"+eid; 
+    const url = "http://localhost:5000/"+id+"/events/update/"+eid; 
     var date = new Date();
     date=format(date, "yyyy-MM-dd'T'HH:mm");
     startDate>date ? endDate>startDate? organizerContact.length == 10? (axios.patch(url, updatedData).then((res) => {
         if (res.status === 200) {
+          window.location.replace(`/user/${id}`);
           alert("Event updated successfully");
         } else {
           Promise.reject();
@@ -158,7 +172,7 @@ export default function UpdateEvent() {
 
 return (
   <div>
-    <Navbar links={[]} pfpicon={true} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/"+id} username={name} logolink={"/user/"+id+"/home"}/>
+            <Navbar links={[]} pfpicon={true} userpfp={user.pfp} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/"+id} username={user.name} logolink={"/user/"+id+"/home"}/>
     {/* <img src={eventPoster} /> */}
     <div className="background-image-update"></div>
     <div className="eventcreatepage">
@@ -217,17 +231,6 @@ return (
                 onChange={(e) => setEventTheme(e.target.value)}
               /></td>
             </tr>
-        {/* {eventTheme === "others" && (
-          <tr className="event-table-row">
-          <td className="event-table-data1"><label className="label-event">Enter the theme:</label></td>
-          <td className="event-table-data2"><input
-            className="input-event"
-              type="text"
-              value={eventTheme}
-              onChange={(e) => setCustomTheme(e.target.value)}
-            /></td>
-        </tr>
-        )} */}
         <tr className="event-table-row">
           <td className="event-table-data1"><label className="label-event">
           Start Date and Time:</label></td>
@@ -288,19 +291,19 @@ return (
           className="input-event"
             type="radio"
             value="public"
-            readOnly
+            
             checked={!isPrivate}
-            // onChange={() => setIsPrivate(false)}
+            onChange={() => setIsPrivate(false)}
           />Public
           </label>
         <label className="label-options">
           <input
           className="input-event"
             type="radio"
-            readOnly
+            
             value="private"
             checked={isPrivate}
-            // onChange={() => setIsPrivate(true)}
+            onChange={() => setIsPrivate(true)}
           />  Private
           </label></td>
         </tr>      
@@ -383,8 +386,9 @@ return (
       <p style={{color:"red"}}>{message}</p>
       <button className="button-event" type="submit">Update</button>
     </form>
+    <button className="button-event-dlt" onClick={deleteEvent}>Terminate Event</button>
     </div>
-    <div className="footer"><Footer textColor={'white'}></Footer></div>
+    <div className="footer"><Footer textColor={'white'} isLogin={true} id={id}></Footer></div>
   </div>
 );
   

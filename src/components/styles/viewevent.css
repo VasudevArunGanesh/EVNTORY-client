@@ -65,6 +65,12 @@
     border-radius: 5px;
 
 }
+.event-footer-right table{
+    margin: auto;
+}
+.event-footer-right table tr:nth-child(even){
+    background-color: #555;
+}
 
 .event-date,.event-type, .event-theme, .event-venue, .ticket-button, .event-contact{
     margin: 10px;
@@ -128,7 +134,7 @@
     border: 1px solid black;
     border-radius: 5px;
     color: white;
-    width: 50px;
+    width: 100px;
 }
 
 .booking-form button{

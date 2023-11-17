@@ -6,7 +6,7 @@ import "./styles/navbar.css"
 import logo from "./resources/evntory-logo.png"
 import { Button } from 'uiw';
 
-export default function Navbar({bgcolor, textcolor, links, buttons, username, linkto, logolink, dropdown, pfpicon}){
+export default function Navbar({bgcolor, textcolor, links, buttons, username,userpfp, linkto, logolink, dropdown, pfpicon}){
 
     return (
         <div>
@@ -35,7 +35,7 @@ export default function Navbar({bgcolor, textcolor, links, buttons, username, li
       {
             buttons.map((butn, index)=>{
                 return (
-                    <Link to={butn.path} style={{marginRight:"5px"}} key={index}><Button type={butn.type}>{butn.text}</Button></Link>
+                    <Link to={butn.path} style={{marginRight:"5px"}} key={index}><Button className="rowdies-text" type={butn.type}>{butn.text}</Button></Link>
                 )
             })
         }
@@ -47,12 +47,13 @@ export default function Navbar({bgcolor, textcolor, links, buttons, username, li
       {
         pfpicon && (
            (<Button style={{backgroundColor:"#444"}} className="pfp dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="true">
-              <div className="pfpname"  style={{color: `${textcolor}`}}>{username}</div>
-                <svg  style={{color: `${textcolor}`}}  xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
+              <div className="pfpname rowdies-text"  style={{color: `${textcolor}`}}>{username}</div>
+              { userpfp==="" ? (<svg  style={{color: `${textcolor}`}}  xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-person-circle" viewBox="0 0 16 16">
                   <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                   <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-                </svg>
-
+                </svg>):(<img className="navbar-pfp" src={userpfp} />)
+                
+        }
           </Button>)
         )
 

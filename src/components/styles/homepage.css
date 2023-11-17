@@ -10,11 +10,13 @@
     top: 60px;
     color: white;
     background-color: #444;
-    height: 130rem;
+    height: auto;
 }
 .main-home-page{
     position: relative;
     top: 60px;
+    height: auto;
+    min-height: 60rem;
 }
 
 .rowdies-text{
@@ -80,27 +82,36 @@
     color: black;
     position: absolute;
     z-index: 3;
+    top: 26.5rem;
+    left: 1rem;
+}
+.homepage-sidebar-b{
+    height: 53rem;
+    width: 32rem;
+    background-color: transparent;
+    color: black;
+    position: absolute;
+    z-index: 3;
     top: 4.5rem;
     left: 1rem;
 }
 
-
-.homepage-sidebar img {
+.homepage-sidebar img , .homepage-sidebar-b img{
 
     height: 22rem;
     width: 25rem;
-    background-size: auto;
+    
     border-radius: 10px;
   }
 
-.homepage-sidebar h1{
+.homepage-sidebar h1 , .homepage-sidebar-b h1{
     position: absolute;
     color: white;
     text-shadow: 2px 2px 5px black;
 
 }
 
-.homepage-sidebar div{
+.homepage-sidebar div, .homepage-sidebar-b div{
     position: absolute;
     left: 2rem;
     /* margin: 2rem; */
@@ -108,6 +119,7 @@
     text-align: center;
     display: flex;
     justify-content: center;
+    background-size: contain;
     align-items: center;
     height: 22rem;
     width: 25rem;
@@ -115,6 +127,9 @@
     border-radius: 10px;
     box-shadow: rgba(223, 222, 222, 0.4) -5px 5px, rgba(182, 181, 182, 0.3) -10px 10px,rgba(172, 172, 172, 0.2) -15px 15px, rgba(143, 142, 142, 0.1) -20px 20px, rgba(106, 104, 105, 0.05) -25px 25px;
 }
+.homepage-sidebar-b #diva {
+    top: 1.5rem;
+  }
   .homepage-sidebar #div1 {
     top: 1.5rem;
   }
@@ -135,6 +150,9 @@
   .homepage-sidebar #div6 {
     top: 126.5rem;
   }
+  .homepage-sidebar #div7 {
+    top: 151.5rem;
+  }
 .service{
     margin-top: 50px;
 }
@@ -145,7 +163,7 @@
     gap: 1rem;
 }
 .service .box-container .box{
-    border-radius: .5rem;
+    border-radius: 50%;
     background: #333;
     text-align: center;
     padding:2.5rem;
@@ -191,12 +209,13 @@ color: #fff;
 
 .about .row .image{
     flex:1 1 45rem;
-    padding:1rem;
-    height: 100px;
+    padding:0;
 }
 
 .about .row .image img{
-    width:100%;
+    width:500px;
+    height: 300px;
+    background-size: cover;
     border-radius: .5rem;
     border: 1rem solid #333;
 }

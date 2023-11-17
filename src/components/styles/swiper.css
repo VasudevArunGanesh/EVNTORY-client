@@ -121,15 +121,30 @@ swiper-slide span{
     color: white;
     background-color: transparent;
     border: 1px white solid;
+    margin-bottom: 10px;
   }
   swiper-slide:hover button:hover{
     box-shadow: rgba(255, 251, 254, 0.4) 5px 5px, rgba(220, 216, 219, 0.3) 10px 10px, rgba(184, 178, 182, 0.2) 15px 15px, rgba(148, 144, 147, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
 
   }
 
- .material-symbols-outlined{
+  swiper-slide .ticket-status{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.529);
+    bottom: 0;
+    z-index: 2;
+  }
+  
+  swiper-slide .ticket-price{
+    position: absolute;
+    color: rgba(255, 255, 255, 0.529);
+    font-size: 2rem;
+    bottom: 10px;
+    z-index: 2;
+  }
+ .icon1{
   color: grey;
  }
- .material-symbols-outlined:hover{
+ .icon1:hover{
   color: white;
  }

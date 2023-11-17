@@ -11,7 +11,7 @@ import { format, parseISO } from 'date-fns';
 
 export default function CreateNewEvent(){
     const { id } = useParams();
-    const [ name, setName ] = useState();
+    const [ user, setUser ] = useState("");
     const [eventName, setEventName] = useState("");
     const [isPrivate, setIsPrivate] = useState(false);
     const [eventDescription, setEventDescription] = useState("");
@@ -39,7 +39,8 @@ export default function CreateNewEvent(){
       axios
       .get("http://localhost:5000/user/" + id + "/createevent")
       .then((res) => {
-        setName(res.data.name);
+        console.log(res.data);
+        setUser(res.data);
       })
       .catch((err) => {
         alert(err);
@@ -66,12 +67,19 @@ export default function CreateNewEvent(){
   
   
 
-     const handleFileUpload = async (e) => {
+     const handleFileUpload2 = async (e) => {
       const file = e.files[0];
-      console.log(file);
       const base64 = await convertToBase64(file);
       setPoster(base64);
      }
+
+  
+    
+      const handleFileUpload = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertToBase64(file);
+        setPoster(base64);
+       }
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -104,7 +112,7 @@ export default function CreateNewEvent(){
         startDate>date ? endDate>startDate? organizerContact.length == 10? (axios.post(url, eventData).then((res) => {
           if (res.status === 200) {
             let eid = res.data._id;
-            window.location.replace(`/user/${id}/event/${eid}/update-event`);
+            window.location.replace(`/user/${id}/home`);
           } else {
             Promise.reject();
           }
@@ -136,11 +144,11 @@ const customSlideStyle={
     backgroundColor: "rgb(50,50,50)"
 }
     return (
-        <div className="create-page">        
-            <Navbar links={[]} pfpicon={true} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/"+id} username={name} logolink={"/user/"+id+"/home"}/>
+        <div className="create-page" id="createpage">        
+            <Navbar links={[]} pfpicon={true} userpfp={user.pfp} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/"+id} username={user.name} logolink={"/user/"+id+"/home"}/>
             <div className="background-image-create"></div>
         <div className="create-container">
-        <h1 className="rowdies-text" style={{color:"white"}}>Create a new Event</h1>
+        <h1 id="createheading" className="rowdies-text" style={{color:"white"}}>Create a new Event</h1>
 
             <form className="form-create was-validated">
                 <swiper-container className="mySwiper" css-mode="false" pagination-clickable="true" grab="false" keyboard="true" mousewheel="false" pagination="true" navigation="true" effect="cards" grab-cursor="false" centered-slides="true"  slides-per-view='auto' style={customStyle}>
@@ -195,13 +203,15 @@ const customSlideStyle={
                         >
                             <option value="Type">Select Event Type</option>
                             <option value="wedding">Wedding</option>
+                            <option value="getogether">Get-together</option>
+                            <option value="concert">Concert/Party</option>
                             <option value="meeting">Conference Meeting</option>
-                            <option value="concert">Concert</option>
                             <option value="workshop">Workshop</option>
-                            <option value="gathering">Social Gathering</option>
-                            <option value="convention">Convention</option>
+                            <option value="gathering">Social/ Community Event</option>
+                            <option value="convention">Convention/ Exhibition</option>
                             <option value="product launch">Product launch</option>
-                            <option value="getogether">Getogether</option>
+                            <option value="fests">Institutional Events</option>
+                            <option value="sport">Sporting Events</option>
                         </select></td>
                         </tr>
                         
@@ -394,9 +404,8 @@ const customSlideStyle={
     e.preventDefault();
     e.target.classList.remove("drag-active");
     const fileInput = document.getElementById("img");
-
     fileInput.files = e.dataTransfer.files;
-    handleFileUpload(fileInput);
+    handleFileUpload2(fileInput);
   }}>
                             <div className="drop-title">Drop files here</div>
                             <div>or</div>
@@ -424,7 +433,7 @@ const customSlideStyle={
                 </swiper-container>
             </form>
         </div>
-        <div className="footer"><Footer textColor={'white'}></Footer></div>
+        <div className="footer"><Footer textColor={'white'} isLogin={true} id={id}></Footer></div>
 
         </div>
     )

@@ -11,23 +11,26 @@ const TicketBooking = () => {
   const [eventData, setEventData] = useState(null);
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [tickets, setTickets] = useState(1);
+  const [noOfTickets, setTickets] = useState(0);
+  const [ticketBooked, setTicketB] = useState(0);
     const [email,setEmail] = useState();
+    const [ticketLeft, setTicketLeft] = useState(0);
+    const [isDisabled, setDisable] = useState(true);
   useEffect(() => {
       
     const fetchEventData = async () => {
       try {
         setIsLoading(true);
-        axios.get("http://localhost:5000/user/"+id).then((res) =>{
-          // setUser(res.data);
+        const res = await axios.get("http://localhost:5000/user/"+id)
           setUser(res.data);
-          // console.log(user, "user");
-      }).catch((err) =>{
-          alert(err);
-      });
+          setEmail(res.data.email);
+      
 
         const response = await axios.get(`http://localhost:5000/events/${eid}`);
         setEventData(response.data);
+        setTicketB(response.data.ticketBooked);
+        const left = response.data.expectedAttendees-response.data.ticketBooked;
+        setTicketLeft(left);
       } catch (error) {
         setError(`Failed to fetch event data: ${error.message}`);
       } finally {
@@ -38,10 +41,20 @@ const TicketBooking = () => {
     fetchEventData();
   }, []);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const totalCost = eventData.ticketPrice * tickets;
-    alert(`Booking confirmed. Number of tickets: ${tickets}, Total cost: ${totalCost} INR`);
+    const totalCost = eventData.ticketPrice * noOfTickets;
+    const eventName = eventData.eventName, startDate = eventData.startDate, endDate = eventData.endDate
+    const obj = {ticketBooked,email,noOfTickets,eventName, startDate, endDate}
+try{
+    const res1 = await axios.patch("http://localhost:5000/"+id+"/event/"+eid, obj);
+    if (res1) {
+      window.location.replace("./");
+      alert("tickets booked successfully");
+    }
+} catch(err){
+
+}
   };
 
   if (isLoading) {
@@ -52,29 +65,37 @@ const TicketBooking = () => {
     return <div>Error: {error}</div>;
   }
 
+  const checkTick = (e) => {
+    e>ticketLeft ? (setDisable(true)) : (setDisable(false));
+    if (e<=ticketLeft) { setTickets(e);    setTicketB(parseInt(ticketBooked)+parseInt(e));
+    };
+  
+  }
   // Calculate total cost
-  const totalCost = eventData?.ticketPrice * tickets;
+  const totalCost = eventData?.ticketPrice * noOfTickets;
 
   return (
         <div className='booking-page'>
-                <Navbar links={[{text:"back",path:"./"}]} pfpicon={true} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[{text:"Create an Event",type:"danger", path:"/user/"+id+"/create-event"}]} bgcolor={"#444"} textcolor={"white"} linkto={"../user/"+user._id} username={user.name} logolink={"/user/"+user._id+"/home"}/>
+                <Navbar links={[{text:"back",path:"./"}]} pfpicon={true} userpfp={user.pfp} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[{text:"Create an Event",type:"danger", path:"/user/"+id+"/create-event"}]} bgcolor={"#444"} textcolor={"white"} linkto={"../user/"+user._id} username={user.name} logolink={"/user/"+user._id+"/home"}/>
                 <h2 className='rowdies-text' style={{color:"white"}}>Booking Tickets for {eventData?.eventName}</h2>
+                <p className='rowdies-text'>{ticketLeft} Tickets remaining</p>
                 <div className='booking-container'>
                     <form className='booking-form' onSubmit={handleSubmit}>
                         <label htmlFor='email'>Email:</label>
-                        <input type="text" value={user.email} id='email' onChange={(e) => setEmail(e.target.value)} />
+                        <input type="text" value={email} id='email' onChange={(e) => setEmail(e.target.value)} />
                         <label htmlFor="tickets">Number of Tickets:</label>
                         <select 
                             id="tickets" 
-                            value={tickets} 
-                            onChange={(e) => setTickets(Number(e.target.value))} 
-                        >
+                            value={noOfTickets} 
+                            onChange={(e) => checkTick(e.target.value)} 
+                        ><option>choose</option>
                             {[...Array(10).keys()].map(n => (
+                              
                             <option key={n+1} value={n+1}>{n+1}</option>
                             ))}
                         </select>
                         <p><strong>Total Cost:</strong> {totalCost} INR</p>
-                        <button type="submit">Confirm</button>
+                        <button disabled={isDisabled} type="submit">Confirm</button>
                     </form>
                 </div>
                 <div></div>

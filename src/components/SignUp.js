@@ -6,16 +6,17 @@ import "./styles/login_signup.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import logo from "./resources/evntor2.png"
-// style={{ backgroundImage:`url(${background})` }}
+
 function SignUp() {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [location, setLocation] = useState("");
+  const [pfp, setPfp] = useState('');
+  const registeredEvents = [{}];
   var [duplicate, setDuplicate] = useState("");
   const [message, setMessage] = useState('');
   const [passwordType, setPasswordType] = useState("password");
-  // const [passwordInput, setPasswordInput] = useState("");
     
     const toggle = () => {
       console.log("toggle");
@@ -27,7 +28,7 @@ function SignUp() {
     };
 
   let handleSubmit = (event) =>  {
-    const obj = { name, email, password, location };
+    const obj = { name, email, password, location, pfp, registeredEvents };
     const url = "http://localhost:5000/user/signup";
     axios
       .post(url, obj)
@@ -40,7 +41,6 @@ function SignUp() {
           window.location.replace(`/user/login`);
         }
         } else {
-          // Handle 404 error
           if (res.status === 404) {
             alert("The `/user/signup` endpoint does not exist.");
           } else {
@@ -49,7 +49,6 @@ function SignUp() {
         }
       })
       .catch((err) => {
-        // Handle other errors
         alert(err);
      });
       
@@ -123,7 +122,8 @@ function SignUp() {
         <p>Have an account? <Link className="link-underline link-underline-opacity-0" to="/user/login">Login</Link></p>
       </div>
       </div>
-    <div className="footer"><Footer textColor={'white'}></Footer></div>
+    <div className="footer"><div className="footer"><Footer textColor={'white'} isLogin={false}></Footer></div>
+</div>
     </div>
   );
 }
