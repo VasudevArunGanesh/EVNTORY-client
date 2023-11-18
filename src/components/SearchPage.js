@@ -30,9 +30,9 @@ export default function SearchPage(){
         const getArrays = async () => {
       try{
                 setIsLoading(true);
-                  var res1 = await axios.get("http://localhost:5000/user/"+id+"/home");
+                  var res1 = await axios.get("https://evntory-server.onrender.com/user/"+id+"/home");
                 setUser(res1.data);
-                var res = await axios.get("http://localhost:5000/events/search/"+search)
+                var res = await axios.get("https://evntory-server.onrender.com/events/search/"+search)
                    console.log(res.data);
                    setSearchArray(res.data);
 

@@ -17,7 +17,7 @@ const [isLoading, setIsLoading] = useState(true);
     useEffect( () => {
       const getData = async () => {
         try{
-          const res = await axios.get("http://localhost:5000/public-events");
+          const res = await axios.get("https://evntory-server.onrender.com/public-events");
           setPubEventsArray(res.data);
 
           }catch(err) {

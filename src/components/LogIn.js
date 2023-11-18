@@ -26,7 +26,7 @@ function LogIn() {
 
     let handleSubmit = (event) => {
       const obj = { email, password };
-      const url = "http://localhost:5000/user/login";
+      const url = "https://evntory-server.onrender.com/user/login";
       axios
         .post(url, obj)
         .then((res) => {

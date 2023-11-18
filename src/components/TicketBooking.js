@@ -21,12 +21,12 @@ const TicketBooking = () => {
     const fetchEventData = async () => {
       try {
         setIsLoading(true);
-        const res = await axios.get("http://localhost:5000/user/"+id)
+        const res = await axios.get("https://evntory-server.onrender.com/user/"+id)
           setUser(res.data);
           setEmail(res.data.email);
       
 
-        const response = await axios.get(`http://localhost:5000/events/${eid}`);
+        const response = await axios.get(`https://evntory-server.onrender.com/events/${eid}`);
         setEventData(response.data);
         setTicketB(response.data.ticketBooked);
         const left = response.data.expectedAttendees-response.data.ticketBooked;
@@ -47,7 +47,7 @@ const TicketBooking = () => {
     const eventName = eventData.eventName, startDate = eventData.startDate, endDate = eventData.endDate
     const obj = {ticketBooked,email,noOfTickets,eventName, startDate, endDate}
 try{
-    const res1 = await axios.patch("http://localhost:5000/"+id+"/event/"+eid, obj);
+    const res1 = await axios.patch("https://evntory-server.onrender.com/"+id+"/event/"+eid, obj);
     if (res1) {
       window.location.replace("./");
       alert("tickets booked successfully");
