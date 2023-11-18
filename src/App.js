@@ -29,7 +29,7 @@ function App() {
 
 useEffect(() =>{
   axios
-        .get("BACKEND_URL/")
+        .get("https://evntory-app-api.onrender.com/")
         .then((res) => {
           setEventsArray(res.data);
           // console.log(res.data);
@@ -54,7 +54,7 @@ useEffect(() =>{
         date>=Edate ? event.eventStatus = -1 : date>=Sdate ? event.eventStatus = 1 : event.eventStatus = 0;}
       }) 
       axios
-      .patch("BACKEND_URL/", eventsArray)
+      .patch("https://evntory-app-api.onrender.com/", eventsArray)
       .then((res) => {
         console.log(res.data.message);
       })

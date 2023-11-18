@@ -16,6 +16,7 @@
     "circular-progress": "^0.2.1",
     "date-fns": "^2.30.0",
     "deck.gl": "^8.9.32",
+    "dotenv": "^16.3.1",
     "emailjs-com": "^3.2.0",
     "fullcalendar": "^6.1.9",
     "leaflet": "^1.9.4",

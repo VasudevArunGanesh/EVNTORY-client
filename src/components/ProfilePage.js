@@ -56,13 +56,13 @@ export default function ProfilePage(){
     const getData= async () => {
       setIsLoading(true);
       try{
-        const res1 = await axios.get("BACKEND_URL/user/"+id);
+        const res1 = await axios.get("https://evntory-app-api.onrender.com/user/"+id);
         setUser(res1.data);
-        const res2 = await axios.get("BACKEND_URL/"+id+"/events/upc");
+        const res2 = await axios.get("https://evntory-app-api.onrender.com/"+id+"/events/upc");
         setUArray(res2.data);
-        const res3 = await axios.get("BACKEND_URL/"+id+"/events/term");
+        const res3 = await axios.get("https://evntory-app-api.onrender.com/"+id+"/events/term");
         setTArray(res3.data);
-        const res4  = await axios.get("BACKEND_URL/"+id+"/events/ong");
+        const res4  = await axios.get("https://evntory-app-api.onrender.com/"+id+"/events/ong");
         setOArray(res4.data);
 
 
@@ -96,7 +96,7 @@ export default function ProfilePage(){
    const handleBackend = async ()=>{
     console.log(pfp);
     try{
-          const res = await axios.patch("BACKEND_URL/user/"+id+"/pfp" ,{pfp: pfp});
+          const res = await axios.patch("https://evntory-app-api.onrender.com/user/"+id+"/pfp" ,{pfp: pfp});
           window.location.replace(`/user/${id}`)
       
       } catch (err){
@@ -141,7 +141,7 @@ export default function ProfilePage(){
     setLoading(true);
     try {
       // backend
-      const url = "BACKEND_URL/user/"+id+"/update-pass";
+      const url = "https://evntory-app-api.onrender.com/user/"+id+"/update-pass";
       const obj = {
                         id,
                         currentPassword,

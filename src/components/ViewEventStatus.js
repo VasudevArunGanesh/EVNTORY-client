@@ -43,9 +43,9 @@ const { id } = useParams();
       const fetchEventData = async () => {
         try {
           setIsLoading(true);
-          const res = await axios.get("BACKEND_URL/user/"+id)  
+          const res = await axios.get("https://evntory-app-api.onrender.com/user/"+id)  
           setUser(res.data);
-          const response = await axios.get(`BACKEND_URL/events/${eid}`);
+          const response = await axios.get(`https://evntory-app-api.onrender.com/events/${eid}`);
           setEventData(response.data);
           var date = parseISO(response.data.startDate);
           date = format(date, "dd-MM-yyyy hh:mm")

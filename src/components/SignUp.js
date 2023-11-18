@@ -29,7 +29,7 @@ function SignUp() {
 
   let handleSubmit = (event) =>  {
     const obj = { name, email, password, location, pfp, registeredEvents };
-    const url = "BACKEND_URL/user/signup";
+    const url = "https://evntory-app-api.onrender.com/user/signup";
     axios
       .post(url, obj)
       .then((res) => {

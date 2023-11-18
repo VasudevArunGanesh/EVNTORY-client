@@ -26,7 +26,7 @@ function LogIn() {
 
     let handleSubmit = (event) => {
       const obj = { email, password };
-      const url = "BACKEND_URL/user/login";
+      const url = "https://evntory-app-api.onrender.com/user/login";
       axios
         .post(url, obj)
         .then((res) => {

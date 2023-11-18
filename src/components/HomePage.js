@@ -44,32 +44,32 @@ export default function HomePage(){
 
       try{
 
-      var res1 = await axios.get("BACKEND_URL/user/"+id+"/home");
+      var res1 = await axios.get("https://evntory-app-api.onrender.com/user/"+id+"/home");
       setUser(res1.data);
 
 
-      var res2 = await axios.get("BACKEND_URL/events/concert")
+      var res2 = await axios.get("https://evntory-app-api.onrender.com/events/concert")
       setConcertArray(res2.data);
         
-      var res3 = await axios.get("BACKEND_URL/events/workshop")
+      var res3 = await axios.get("https://evntory-app-api.onrender.com/events/workshop")
       setWorkshopArray(res3.data);
     
-      var res4 = await axios.get("BACKEND_URL/events/free")
+      var res4 = await axios.get("https://evntory-app-api.onrender.com/events/free")
       setFreeArray(res4.data);
     
-      var res5 = await axios.get("BACKEND_URL/events/gathering")
+      var res5 = await axios.get("https://evntory-app-api.onrender.com/events/gathering")
       setGatheringArray(res5.data);
     
-      var res6 = await axios.get("BACKEND_URL/events/convention")
+      var res6 = await axios.get("https://evntory-app-api.onrender.com/events/convention")
       setConventionArray(res6.data);
     
-      var res7 = await axios.get("BACKEND_URL/events/institute")
+      var res7 = await axios.get("https://evntory-app-api.onrender.com/events/institute")
       setInstArray(res7.data);
     
-      var res7 = await axios.get("BACKEND_URL/events/sport")
+      var res7 = await axios.get("https://evntory-app-api.onrender.com/events/sport")
       setSportArray(res7.data);
 
-      var res8 = await axios.get("BACKEND_URL/public-events")
+      var res8 = await axios.get("https://evntory-app-api.onrender.com/public-events")
         setEventsArray(res8.data);
 
 
