@@ -18,6 +18,7 @@ import image4 from "./resources/workshop_ev.jpg"
 import image5 from "./resources/convention_ev.jpg"
 import image6 from "./resources/gathering.jpg"
 import image7 from "./resources/inst_ev.jpg"
+import image8 from "./resources/sport.jpg"
 
 
 export default function HomePage(){
@@ -132,6 +133,7 @@ if (isLoading) {
                   </button>
                   <ul className="dropdown-menu">
                     <Link className="dropdown-item" to={"./filter/local"}><li color="#999">Events near you</li></Link>
+                    <Link className="dropdown-item" to={"./filter/date"}><li color="#999">By Date</li></Link>
                   </ul>
                 </div>
             </div>   
@@ -170,7 +172,7 @@ if (isLoading) {
                     <h1  className="rowdies-text"><Typewriter words = {['Institutional events']} cursor = {false} loop={true} delaySpeed={10000} /></h1>
                 </div>
                 <div id="div7">
-                    <img  src={image7}></img>
+                    <img  src={image8}></img>
                     <h1  className="rowdies-text"><Typewriter words = {['Sporting events']} cursor = {false} loop={true} delaySpeed={10000} /></h1>
                 </div>
             </div>

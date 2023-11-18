@@ -7,6 +7,8 @@ import Footer from "./Footer";
 import EventsCarousel from "./EventsCarousel";
 import {Button} from 'uiw'
 import ClipLoader from "react-spinners/ClipLoader";
+import image from "./resources/local_ev.jpg"
+
 
 const override= {CSSProperties :{
   display: "block",
@@ -93,7 +95,7 @@ export default function SearchPage(){
                     <h1  className="rowdies-text"><Typewriter words = {['Events near you!']} cursor = {false} loop={true} delaySpeed={10000} /></h1>
                 </div> */}
                 <div id="diva">
-                    <img  src="https://picsum.photos/160/200?random=3.jpg"></img>
+                    <img  src={image} />
                     <h1  className="rowdies-text">
                         Showing results for "{search}"
                     </h1>

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from './Navbar';
+import emailjs from 'emailjs-com';
+
 
 const TicketBooking = () => {
     const {id} = useParams();
@@ -41,16 +43,30 @@ const TicketBooking = () => {
     fetchEventData();
   }, []);
 
+  function sendEmail(e) {
+    e.preventDefault();   
+
+    emailjs.sendForm('service_elz3jyq', 'template_x8otg1c', e.target, 'DIZeXuMOOVyUyhndK')
+      .then((result) => {
+          window.location.reload()  
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const title = eventData.eventName, start = eventData.startDate, end = eventData.endDate;
     const totalCost = eventData.ticketPrice * noOfTickets;
-    const eventName = eventData.eventName, startDate = eventData.startDate, endDate = eventData.endDate
-    const obj = {ticketBooked,email,noOfTickets,eventName, startDate, endDate}
+    const obj = {ticketBooked,email,noOfTickets,title, start, end}
 try{
     const res1 = await axios.patch("https://evntory-app-api.onrender.com/"+id+"/event/"+eid, obj);
     if (res1) {
+      
+      sendEmail(event);
+      alert("tickets booked successfully, sent via email");
       window.location.replace("./");
-      alert("tickets booked successfully");
     }
 } catch(err){
 
@@ -77,15 +93,16 @@ try{
   return (
         <div className='booking-page'>
                 <Navbar links={[{text:"back",path:"./"}]} pfpicon={true} userpfp={user.pfp} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[{text:"Create an Event",type:"danger", path:"/user/"+id+"/create-event"}]} bgcolor={"#444"} textcolor={"white"} linkto={"../user/"+user._id} username={user.name} logolink={"/user/"+user._id+"/home"}/>
-                <h2 className='rowdies-text' style={{color:"white"}}>Booking Tickets for {eventData?.eventName}</h2>
+                <h2 className='rowdies-text' name="event_name" style={{color:"white"}}>Booking Tickets for {eventData?.eventName}</h2>
                 <p className='rowdies-text'>{ticketLeft} Tickets remaining</p>
                 <div className='booking-container'>
                     <form className='booking-form' onSubmit={handleSubmit}>
                         <label htmlFor='email'>Email:</label>
-                        <input type="text" value={email} id='email' onChange={(e) => setEmail(e.target.value)} />
+                        <input type="text" value={email} id='email' name="to_email" onChange={(e) => setEmail(e.target.value)} />
                         <label htmlFor="tickets">Number of Tickets:</label>
                         <select 
                             id="tickets" 
+                            name="no_of_tickets"
                             value={noOfTickets} 
                             onChange={(e) => checkTick(e.target.value)} 
                         ><option>choose</option>

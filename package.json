@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "host": "https://evntory-app.onrender.com",
   "proxy": "https://evntory-app.onrender.com",
   "private": true,
   "dependencies": {
@@ -21,6 +22,7 @@
     "fullcalendar": "^6.1.9",
     "leaflet": "^1.9.4",
     "react": "^18.2.0",
+    "react-big-calendar": "^1.8.5",
     "react-bootstrap": "^2.9.1",
     "react-calendar": "^4.6.1",
     "react-dom": "^18.2.0",

@@ -1,15 +1,34 @@
-import { useState } from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import { Calendar, dateFnsLocalizer } from 'react-big-calendar'
+import format from 'date-fns/format'
+import parse from 'date-fns/parse'
+import startOfWeek from 'date-fns/startOfWeek'
+import getDay from 'date-fns/getDay'
+import enUS from 'date-fns/locale/en-US'
 
 
-export default function MyCalendar() {
-  // const [value, onChange] = useState(new Date());
-  const value = [new Date(2023, 10, 12), new Date(2023, 11, 11)]
-  return (
-    <div>
-      <Calendar  defaultValue={Date()} value={value} />
-      
-    </div>
-  );
+import "react-big-calendar/lib/css/react-big-calendar.css"
+const locales = {
+  'en-US': enUS,
+}
+
+
+
+export default function MyCalendar({myEventsList}) {
+   
+    const localizer = dateFnsLocalizer({
+        format,
+        parse,
+        startOfWeek,
+        getDay,
+        locales,
+      })
+    return <div style={{backgroundColor:"#999"}}>
+    <Calendar
+      localizer={localizer}
+      events={myEventsList}
+      startAccessor="start"
+      endAccessor="end"
+      style={{ height: "600px" }}
+    />
+  </div>
 }

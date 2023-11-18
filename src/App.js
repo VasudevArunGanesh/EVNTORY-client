@@ -21,6 +21,13 @@ import SearchPage from './components/SearchPage';
 import FilterPage from './components/FilterPage';
 import LoadingScreen from './components/LoadingScreen';
 import ViewEventStatus from "./components/ViewEventStatus";
+import FilterDate from './components/FilterDate';
+import CalendarPage from './components/CalendarPage';
+
+// import dotenv from "dotenv"
+
+// dotenv.config();
+// const BACKEND_URL = process.env.BACKEND_URL;
 
 function App() {
   
@@ -91,7 +98,8 @@ useEffect(() =>{
         <Route path="/user/:id/home/:search" element={<SearchPage />} />
         <Route path="/user/:id/home/filter/local" element={<FilterPage />} />
         <Route path="user/:id/event/:eid/status" element={<ViewEventStatus />} />
-
+        <Route path="/user/:id/home/filter/date" element={<FilterDate />} />
+        <Route path="/user/:id/calendar" element={<CalendarPage />} />
       </Routes>
     </BrowserRouter>
     </div>

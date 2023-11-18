@@ -46,6 +46,9 @@
     background-color: #444;
     color: white;
 }
+.search-filter-bar .searchbar-form .search-label{
+    color: #999
+}
 
 .search-filter-bar .searchbar-form .search-button{
     border: 1px solid greenyellow;

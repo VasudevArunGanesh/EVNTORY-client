@@ -163,6 +163,7 @@ export default function ProfilePage(){
 
 
 
+
     return (
         <div className="profile-page">
           <Navbar links={[]}  pfpicon={false} dropdown={[]} buttons={[{text:"Create an Event",type:"danger", path:"/user/"+id+"/create-event"}]} bgcolor={"rgb(34, 34, 34)"} textcolor={"white"} linkto={"../user/"+id} username={user.name}  logolink={"../user/"+id+"/home"}/>
@@ -190,11 +191,9 @@ export default function ProfilePage(){
               <h1 className="rowdies-text">{user.name}</h1>
               <p className="rowdies-text">email: {user.email}</p>
               <p className="rowdies-text">location: {user.location}</p>
+              <Link to="./calendar"><button className="updt-pass">Registered Events</button></Link>
             </div>
-            <div className="sidebar-cal">
-            {/* <MyCalendar /> */}
-
-            </div>
+            
             <div className="sidebar-bot">
             <button className="updt-pass" onClick={openModal}>Update Password</button>
             <Link to={"/"}><button className="lgout">Log Out</button></Link>
