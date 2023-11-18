@@ -37,7 +37,7 @@ export default function CreateNewEvent(){
     
     useEffect(() => {
       axios
-      .get("https://evntory-server.onrender.com/user/" + id + "/createevent")
+      .get("BACKEND_URL/user/" + id + "/createevent")
       .then((res) => {
         console.log(res.data);
         setUser(res.data);
@@ -106,7 +106,7 @@ export default function CreateNewEvent(){
           registeredUsers
         };
     
-        const url = "https://evntory-server.onrender.com/user/createevent";//need to replace
+        const url = "BACKEND_URL/user/createevent";//need to replace
         var date = new Date();
         date=format(date, "yyyy-MM-dd'T'HH:mm");
         startDate>date ? endDate>startDate? organizerContact.length == 10? (axios.post(url, eventData).then((res) => {

@@ -22,12 +22,12 @@ export default function SearchPage(){
 
         const getArrays = async () => {
 
-            var res1 = await axios.get("https://evntory-server.onrender.com/user/"+id+"/home");
+            var res1 = await axios.get("BACKEND_URL/user/"+id+"/home");
        try{
         setUser(res1.data);
 
       
-          var res = await axios.get("https://evntory-server.onrender.com/events/local/"+user.location)
+          var res = await axios.get("BACKEND_URL/events/local/"+user.location)
           console.log(res.data);
           setLocalArray(res.data);
         } catch (err){

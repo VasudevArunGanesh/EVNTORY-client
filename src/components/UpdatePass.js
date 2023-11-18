@@ -17,7 +17,7 @@ export default function UpdatePass() {
       
 
   useEffect(() => {
-      const url = "https://evntory-server.onrender.com/user/"+id;
+      const url = "BACKEND_URL/user/"+id;
       axios.get(url).then((res) =>{
           // setUser(res.data);
           setUser(res.data);
@@ -43,7 +43,7 @@ export default function UpdatePass() {
     setLoading(true);
     try {
       // backend
-      const url = "https://evntory-server.onrender.com/user/"+id+"/update-pass";
+      const url = "BACKEND_URL/user/"+id+"/update-pass";
       const obj = {
                         id,
                         currentPassword,

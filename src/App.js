@@ -29,7 +29,7 @@ function App() {
 
 useEffect(() =>{
   axios
-        .get("https://evntory-server.onrender.com/")
+        .get("BACKEND_URL/")
         .then((res) => {
           setEventsArray(res.data);
           // console.log(res.data);
@@ -54,7 +54,7 @@ useEffect(() =>{
         date>=Edate ? event.eventStatus = -1 : date>=Sdate ? event.eventStatus = 1 : event.eventStatus = 0;}
       }) 
       axios
-      .patch("https://evntory-server.onrender.com/", eventsArray)
+      .patch("BACKEND_URL/", eventsArray)
       .then((res) => {
         console.log(res.data.message);
       })
@@ -64,7 +64,7 @@ useEffect(() =>{
     }, [])
   // axios({
   //   method: "GET",
-  //   url: "https://evntory-server.onrender.com/",
+  //   url: "BACKEND_URL/",
   //   headers: {
   //     "Content-Type": "application/json"
   //   }

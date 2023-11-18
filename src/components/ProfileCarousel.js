@@ -22,7 +22,7 @@ export default function ProfileCarousel({ butn, eventarray, id, dlt }){
 
   const deleteEvent = async (event) => {
     console.log(event);
-    const res = await axios.post("https://evntory-server.onrender.com/event/"+event._id+"/delete");
+    const res = await axios.post("BACKEND_URL/event/"+event._id+"/delete");
     try {
       alert("event deleted successfully");
       window.location.reload();

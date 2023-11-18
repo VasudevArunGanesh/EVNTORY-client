@@ -61,14 +61,14 @@ export default function UpdateEvent() {
   useEffect(() => {
     const fetchEventData = async () => {
       axios
-      .get("https://evntory-server.onrender.com/user/" + id + "/createevent")
+      .get("BACKEND_URL/user/" + id + "/createevent")
       .then((res) => {
         setUser(res.data);
       })
       .catch((err) => {
         alert(err);
      });
-      const url = "https://evntory-server.onrender.com/events/" +eid;
+      const url = "BACKEND_URL/events/" +eid;
       try {
         const res = await axios.get(url);
         // console.log(res.data);
@@ -114,7 +114,7 @@ export default function UpdateEvent() {
 
 const deleteEvent = async () => {
   try{
-    const res = axios.patch("https://evntory-server.onrender.com/"+id+"/events/delete/"+eid);
+    const res = axios.patch("BACKEND_URL/"+id+"/events/delete/"+eid);
     window.location.replace(`/user/${id}`);
     alert(await res.data.message);
 
@@ -149,7 +149,7 @@ const deleteEvent = async () => {
       userId
     };
 
-    const url = "https://evntory-server.onrender.com/"+id+"/events/update/"+eid; 
+    const url = "BACKEND_URL/"+id+"/events/update/"+eid; 
     var date = new Date();
     date=format(date, "yyyy-MM-dd'T'HH:mm");
     startDate>date ? endDate>startDate? organizerContact.length == 10? (axios.patch(url, updatedData).then((res) => {
