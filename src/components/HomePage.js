@@ -121,7 +121,7 @@ if (isLoading) {
 
     return (
         <div className="main-home-page" id="hpage" style={{backgroundColor:"#222"}}>
-          <Navbar links={[{text:"Home", path:"./home"},{text:"parties", path:"#div1"},{text:"workshops", path:"#div2"},{text:"community", path:"#div4"},{text:"Contact", path:"#div7"}]} pfpicon={true} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[{text:"Create an Event",type:"danger", path:"/user/"+id+"/create-event#createheading"}]} bgcolor={"#444"} textcolor={"white"} linkto={"../user/"+user._id} username={user.name} logolink={"/user/"+user._id+"/home"} userpfp={user.pfp}/>
+          <Navbar links={[{text:"Home", path:""},{text:"parties", path:"#div1"},{text:"workshops", path:"#div2"},{text:"community", path:"#div4"},{text:"Contact", path:"#div7"}]} pfpicon={true} dropdown={[{text:"Profile", path:"/user/"+id},{text:"Log Out", path:"../"}]} buttons={[{text:"Create an Event",type:"danger", path:"/user/"+id+"/create-event#createheading"}]} bgcolor={"#444"} textcolor={"white"} linkto={"../user/"+user._id} username={user.name} logolink={"/user/"+user._id+"/home"} userpfp={user.pfp}/>
              <div className="search-filter-bar">
               <form className="searchbar-form" onSubmit={searchQuery} >
                 <input className="search-input" type="text" placeholder="Search for events" onChange={(e) => checkInput(e)}/>  

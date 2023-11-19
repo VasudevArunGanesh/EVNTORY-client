@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from './Navbar';
 import emailjs from 'emailjs-com';
+import LoadingScreen from './LoadingScreen';
 
 
 const TicketBooking = () => {
@@ -11,7 +12,6 @@ const TicketBooking = () => {
   const { eid } = useParams();
   const [user, setUser] = useState();
   const [eventData, setEventData] = useState(null);
-  const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [noOfTickets, setTickets] = useState(0);
   const [ticketBooked, setTicketB] = useState(0);
@@ -34,7 +34,7 @@ const TicketBooking = () => {
         const left = response.data.expectedAttendees-response.data.ticketBooked;
         setTicketLeft(left);
       } catch (error) {
-        setError(`Failed to fetch event data: ${error.message}`);
+        console.error(error);      
       } finally {
         setIsLoading(false);
       }
@@ -46,7 +46,7 @@ const TicketBooking = () => {
   function sendEmail(e) {
     e.preventDefault();   
 
-    emailjs.sendForm('service_elz3jyq', 'template_x8otg1c', e.target, 'DIZeXuMOOVyUyhndK')
+    emailjs.sendForm('service_elz3jyq', 'template_x8otg1c', e.target, `${process.env.REACT_APP_EMAIL_API}`)
       .then((result) => {
           window.location.reload()  
       }, (error) => {
@@ -69,17 +69,16 @@ try{
       window.location.replace("./");
     }
 } catch(err){
+  console.error(err);      
 
 }
   };
 
   if (isLoading) {
-    return <div>Loading event details...</div>;
+    return <LoadingScreen />;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+
 
   const checkTick = (e) => {
     e>ticketLeft ? (setDisable(true)) : (setDisable(false));

@@ -2,7 +2,7 @@
   background-color: #444;
   position: relative;
   top: 60px;
-  height: 80rem;
+  height: auto;
   display: flex;
   justify-content: start;
 }

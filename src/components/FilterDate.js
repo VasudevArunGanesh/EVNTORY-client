@@ -50,10 +50,7 @@ export default function FilterDate(){
             }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const obj = {
-            Sdate,
-            Edate
-        }
+
         var res = await axios.get("https://evntory-app-api.onrender.com/events/date/"+Sdate+"/"+Edate);
         try{
         console.log(res.data);
@@ -71,7 +68,7 @@ export default function FilterDate(){
                 <form className="searchbar-form" onSubmit={(e)=>handleSubmit(e)}>
                     <label className="search-label">Starting date: <input className="search-input" type="datetime-local" onChange={(e)=>setSdate(e.target.value)} /></label>
                     <label className="search-label">Ending date: </label><input className="search-input" type="datetime-local" onChange={(e)=>setEdate(e.target.value)} />
-                    <Button className="search-button">Search</Button>
+                    <Button type="submit" className="search-button" onClick={(e)=>handleSubmit(e)}>Search</Button>
                 </form>
               <div className="dropdown">
                   <button className="btn btn-secondary dropdown-toggle filter-dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">

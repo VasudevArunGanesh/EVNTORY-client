@@ -13,7 +13,7 @@ const AddressMap = ({ address }) => {
     const convertAddressToCoordinates = async () => {
       if (address) {
         // Use OpenCage Geocoding API (replace YOUR_API_KEY with your actual API key)
-        const apiKey = 'e6568df8578347fd9dfa0f013c910bde';
+        const apiKey = `${process.env.REACT_APP_MAP_API}`;
         const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
           address
         )}&key=${apiKey}`;
@@ -58,10 +58,7 @@ const AddressMap = ({ address }) => {
       />
       <Marker position={pos}>
         <Popup>
-          Omu-Aran the Head Post of Igbomina land, 
-          is a town in the Nigerian state of Kwara. 
-          It originated from Ife and currently the local
-          government headquarters of Irepodun local government.
+         
         </Popup>
       </Marker>
     </MapContainer>

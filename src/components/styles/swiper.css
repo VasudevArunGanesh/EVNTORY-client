@@ -108,6 +108,7 @@ swiper-slide span{
     right: auto;
     color: white;
     text-shadow: 2px 2px 5px black;
+    width: 13rem;
   }
 
   swiper-slide .button{

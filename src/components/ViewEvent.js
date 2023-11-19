@@ -51,10 +51,10 @@ const { id } = useParams();
           const response = await axios.get(`https://evntory-app-api.onrender.com/events/${eid}`);
           setEventData(response.data);
          var date = parseISO(response.data.startDate);
-        date = format(date, "dd-MM-yyyy hh:mm")
+        date = format(date, "dd-MM-yyyy HH:mm")
           setSDate(date);
           date = parseISO(response.data.endDate);
-        date = format(date, "dd-MM-yyyy hh:mm")
+        date = format(date, "dd-MM-yyyy HH:mm")
           setEDate(date);
           console.log(response.data.expectedAttendees,response.data.ticketBooked,response.data.expectedAttendees>response.data.ticketBooked)
           response.data.expectedAttendees>response.data.ticketBooked ? (setDisabled(false)) : (setDisabled(true))

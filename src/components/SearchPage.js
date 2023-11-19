@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import EventsCarousel from "./EventsCarousel";
 import {Button} from 'uiw'
-import ClipLoader from "react-spinners/ClipLoader";
+import LoadingScreen from "./LoadingScreen";
 import image from "./resources/local_ev.jpg"
 
 
@@ -62,14 +62,7 @@ export default function SearchPage(){
       }
 
       if (isLoading) {
-        return <div><p>Loading...</p><ClipLoader
-        color={"red"}
-        loading={isLoading}
-        cssOverride={override}
-        size={150}
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      /></div> ;
+        return <LoadingScreen  isLoading={isLoading}/> ;
       }
     
       if (error) {
