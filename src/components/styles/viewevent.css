@@ -6,6 +6,7 @@
     background-color: #222;
     color: white;
     height: auto;
+    min-height: 55rem;
     padding: 30px;
     display: flex;
     flex-direction: row;

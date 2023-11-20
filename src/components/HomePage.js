@@ -42,41 +42,43 @@ export default function HomePage(){
 
       const getArrays = async () => {
         setIsLoading(true);
+        var res1 = await axios.get("https://evntory-app-api.onrender.com/user/"+id+"/home");
+      var res2 = await axios.get("https://evntory-app-api.onrender.com/events/concert")
+      var res3 = await axios.get("https://evntory-app-api.onrender.com/events/workshop")
+      var res4 = await axios.get("https://evntory-app-api.onrender.com/events/free")
+      var res5 = await axios.get("https://evntory-app-api.onrender.com/events/gathering")
+      var res6 = await axios.get("https://evntory-app-api.onrender.com/events/convention")
+      var res7 = await axios.get("https://evntory-app-api.onrender.com/events/institute")
+      var res8 = await axios.get("https://evntory-app-api.onrender.com/events/sport")
+      var res9 = await axios.get("https://evntory-app-api.onrender.com/public-events")
+
 
       try{
 
-      var res1 = await axios.get("https://evntory-app-api.onrender.com/user/"+id+"/home");
       setUser(res1.data);
 
-
-      var res2 = await axios.get("https://evntory-app-api.onrender.com/events/concert")
       setConcertArray(res2.data);
         
-      var res3 = await axios.get("https://evntory-app-api.onrender.com/events/workshop")
       setWorkshopArray(res3.data);
     
-      var res4 = await axios.get("https://evntory-app-api.onrender.com/events/free")
+    
       setFreeArray(res4.data);
     
-      var res5 = await axios.get("https://evntory-app-api.onrender.com/events/gathering")
       setGatheringArray(res5.data);
     
-      var res6 = await axios.get("https://evntory-app-api.onrender.com/events/convention")
       setConventionArray(res6.data);
     
-      var res7 = await axios.get("https://evntory-app-api.onrender.com/events/institute")
       setInstArray(res7.data);
     
-      var res7 = await axios.get("https://evntory-app-api.onrender.com/events/sport")
-      setSportArray(res7.data);
+      setSportArray(res8.data);
 
-      var res8 = await axios.get("https://evntory-app-api.onrender.com/public-events")
-        setEventsArray(res8.data);
+        setEventsArray(res9.data);
 
 
       } catch (err){
             console.error(err);
       } finally{
+
         setIsLoading(false);
 
       }

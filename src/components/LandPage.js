@@ -19,7 +19,7 @@ const [isLoading, setIsLoading] = useState(true);
         try{
           const res = await axios.get("https://evntory-app-api.onrender.com/public-events");
           setPubEventsArray(res.data);
-
+          console.log("recieved");
           }catch(err) {
             alert(err);
          } finally{

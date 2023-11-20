@@ -211,14 +211,16 @@ return (
                 onChange={(e) => setEventType(e.target.value)}
               >
                 <option value="Type">Select Event Type</option>
-                <option value="Funeral">Funeral</option>
-                <option value="Wedding">Wedding</option>
-                <option value="Concert">Concert</option>
-                <option value="Conference">Conference</option>
-                <option value="Networking">Networking</option>
-                <option value="Workshop">Workshop</option>
-                <option value="Product launch">Product launch</option>
-                <option value="Internal corporate">Internal corporate</option>
+                <option value="wedding">Wedding</option>
+                <option value="getogether">Get-together</option>
+                <option value="concert">Concert/Party</option>
+                <option value="meeting">Conference Meeting</option>
+                <option value="workshop">Workshop</option>
+                <option value="gathering">Social/ Community Event</option>
+                <option value="convention">Convention/ Exhibition</option>
+                <option value="product launch">Product launch</option>
+                <option value="fests">Institutional Events</option>
+                <option value="sport">Sporting Events</option>
               </select></td>
             </tr>
             <tr className="event-table-row">
